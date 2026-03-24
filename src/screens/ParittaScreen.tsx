@@ -81,7 +81,7 @@ export default function ParittaScreen() {
           </TouchableOpacity>
 
           <Text
-            style={[styles.title, { color: theme.bannerText }]}
+            style={[styles.title, { color: theme.bannerText, fontFamily: settings.language === 'myanmar' ? 'Padauk-Bold' : 'Maitree-Bold' }]}
             numberOfLines={1}
           >
             {getDisplayTitle()}
@@ -124,6 +124,8 @@ export default function ParittaScreen() {
                         : theme.buttonText,
                     fontWeight:
                       p.id === currentParittaId ? 'bold' : 'normal',
+                    fontFamily:
+                      p.id === currentParittaId ? 'Maitree-Bold' : 'Maitree-Regular',
                   },
                 ]}
               >
@@ -135,7 +137,7 @@ export default function ParittaScreen() {
 
         {/* Translation toggle */}
         <View style={styles.toggleRow}>
-          <Text style={[styles.toggleLabel, { color: theme.bannerText }]}>
+          <Text style={[styles.toggleLabel, { color: theme.bannerText, fontFamily: settings.language === 'myanmar' ? 'Padauk-Regular' : 'Maitree-Regular' }]}>
             {settings.language === 'myanmar' ? 'ပါဠိသာ' : 'Pali Only'}
           </Text>
           <Switch
@@ -151,7 +153,7 @@ export default function ParittaScreen() {
               settings.showTranslation ? theme.primary : theme.buttonBg
             }
           />
-          <Text style={[styles.toggleLabel, { color: theme.bannerText }]}>
+          <Text style={[styles.toggleLabel, { color: theme.bannerText, fontFamily: settings.language === 'myanmar' ? 'Padauk-Regular' : 'Maitree-Regular' }]}>
             {settings.language === 'myanmar'
               ? 'ဘာသာပြန်ပါ'
               : 'With Translation'}
@@ -198,7 +200,7 @@ export default function ParittaScreen() {
             <Text
               style={[
                 styles.stanzaNumber,
-                { color: theme.primary },
+                { color: theme.primary, fontFamily: 'Maitree-Bold' },
               ]}
             >
               {stanza.number}.
@@ -228,7 +230,7 @@ export default function ParittaScreen() {
                   styles.translationText,
                   {
                     color: theme.textTranslation,
-                    fontSize: settings.fontSize - 2,
+                    fontSize: settings.fontSize - (settings.language === 'english' ? 1 : 2),
                     fontFamily:
                       settings.language === 'myanmar'
                         ? 'Padauk-Regular'

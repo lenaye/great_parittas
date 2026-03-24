@@ -137,5 +137,6 @@ const styles = StyleSheet.create({
   timeText: {
     fontSize: 11,
     opacity: 0.8,
+    fontFamily: 'Maitree-Regular',
   },
 });
