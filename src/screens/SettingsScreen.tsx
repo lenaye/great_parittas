@@ -85,7 +85,7 @@ export default function SettingsScreen() {
                 </Text>
                 <View style={styles.languageTextCol}>
                   <Text
-                    style={[styles.languageName, { color: theme.text }]}
+                    style={[styles.languageName, { color: theme.text, fontFamily: lang === 'myanmar' ? 'Padauk-Regular' : 'Maitree-Medium' }]}
                   >
                     {lang === 'myanmar' ? 'မြန်မာ' : 'English'}
                   </Text>
@@ -160,7 +160,7 @@ export default function SettingsScreen() {
               <View style={styles.languageRow}>
                 <View style={styles.languageTextCol}>
                   <Text
-                    style={[styles.languageName, { color: theme.text }]}
+                    style={[styles.languageName, { color: theme.text, fontFamily: settings.language === 'myanmar' ? 'Padauk-Regular' : 'Maitree-Medium' }]}
                   >
                     {settings.language === 'myanmar' ? monk.nameMy : monk.nameEn}
                   </Text>
@@ -227,6 +227,51 @@ export default function SettingsScreen() {
           </View>
         </View>
 
+        {/* Translation */}
+        <Text style={[styles.sectionTitle, { color: theme.textSecondary }]}>
+          TRANSLATION
+        </Text>
+        <View
+          style={[
+            styles.settingsCard,
+            {
+              backgroundColor: theme.settingsItemBg,
+              borderColor: theme.cardBorder,
+            },
+          ]}
+        >
+          <View style={styles.settingsRow}>
+            <View style={styles.settingInfo}>
+              <Text style={[styles.settingLabel, { color: theme.text }]}>
+                Show Translation
+              </Text>
+              <Text
+                style={[
+                  styles.settingDesc,
+                  { color: theme.textSecondary },
+                ]}
+              >
+                {settings.language === 'myanmar'
+                  ? 'Show Burmese translation below Pali'
+                  : 'Show English translation below Pali'}
+              </Text>
+            </View>
+            <Switch
+              value={settings.showTranslation}
+              onValueChange={(val) =>
+                updateSettings({ showTranslation: val })
+              }
+              trackColor={{
+                false: theme.progressBg,
+                true: theme.primaryLight,
+              }}
+              thumbColor={
+                settings.showTranslation ? theme.primary : theme.buttonBg
+              }
+            />
+          </View>
+        </View>
+
         {/* Font Size */}
         <Text style={[styles.sectionTitle, { color: theme.textSecondary }]}>
           FONT SIZE
@@ -265,6 +310,8 @@ export default function SettingsScreen() {
                           : theme.buttonText,
                       fontWeight:
                         settings.fontSize === size ? 'bold' : 'normal',
+                      fontFamily:
+                        settings.fontSize === size ? 'Maitree-Bold' : 'Maitree-Regular',
                     },
                   ]}
                 >
@@ -276,7 +323,7 @@ export default function SettingsScreen() {
           <Text
             style={[
               styles.previewText,
-              { color: theme.text, fontSize: settings.fontSize },
+              { color: theme.text, fontSize: settings.fontSize, fontFamily: settings.language === 'myanmar' ? 'Padauk-Regular' : 'Maitree-Regular' },
             ]}
           >
             {settings.language === 'myanmar'
@@ -326,23 +373,23 @@ export default function SettingsScreen() {
           </View>
         </View>
 
-        {/* Translation */}
-        <Text style={[styles.sectionTitle, { color: theme.textSecondary }]}>
-          TRANSLATION
-        </Text>
-        <View
+        {/* About */}
+        <TouchableOpacity
           style={[
             styles.settingsCard,
             {
               backgroundColor: theme.settingsItemBg,
               borderColor: theme.cardBorder,
+              marginTop: 24,
             },
           ]}
+          onPress={() => navigation.navigate('About')}
+          activeOpacity={0.7}
         >
           <View style={styles.settingsRow}>
             <View style={styles.settingInfo}>
               <Text style={[styles.settingLabel, { color: theme.text }]}>
-                Show Translation
+                About
               </Text>
               <Text
                 style={[
@@ -350,26 +397,12 @@ export default function SettingsScreen() {
                   { color: theme.textSecondary },
                 ]}
               >
-                {settings.language === 'myanmar'
-                  ? 'Show Burmese translation below Pali'
-                  : 'Show English translation below Pali'}
+                Version, resources & credits
               </Text>
             </View>
-            <Switch
-              value={settings.showTranslation}
-              onValueChange={(val) =>
-                updateSettings({ showTranslation: val })
-              }
-              trackColor={{
-                false: theme.progressBg,
-                true: theme.primaryLight,
-              }}
-              thumbColor={
-                settings.showTranslation ? theme.primary : theme.buttonBg
-              }
-            />
+            <Text style={{ color: theme.textSecondary, fontSize: 18 }}>→</Text>
           </View>
-        </View>
+        </TouchableOpacity>
 
         <View style={{ height: 40 }} />
       </ScrollView>
@@ -404,6 +437,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 20,
     fontWeight: 'bold',
+    fontFamily: 'Maitree-Bold',
   },
   content: {
     flex: 1,
@@ -418,6 +452,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 8,
     marginLeft: 4,
+    fontFamily: 'Maitree-Medium',
   },
   settingsCard: {
     borderRadius: 12,
@@ -438,10 +473,12 @@ const styles = StyleSheet.create({
   settingLabel: {
     fontSize: 16,
     fontWeight: '500',
+    fontFamily: 'Maitree-Medium',
   },
   settingDesc: {
     fontSize: 13,
     marginTop: 2,
+    fontFamily: 'Maitree-Regular',
   },
   languageOption: {
     paddingHorizontal: 16,
@@ -465,6 +502,7 @@ const styles = StyleSheet.create({
   languageDesc: {
     fontSize: 13,
     marginTop: 2,
+    fontFamily: 'Maitree-Regular',
   },
   radio: {
     width: 22,
