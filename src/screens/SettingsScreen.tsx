@@ -15,6 +15,7 @@ import { useSettings } from '../context/SettingsContext';
 import { getTheme } from '../theme/themes';
 import type { RootStackParamList } from '../navigation/types';
 import type { LanguageMode } from '../data/parittaTexts';
+import type { ChanterMode } from '../context/SettingsContext';
 
 type SettingsNavProp = NativeStackNavigationProp<RootStackParamList, 'Settings'>;
 
@@ -112,6 +113,71 @@ export default function SettingsScreen() {
                   ]}
                 >
                   {settings.language === lang && (
+                    <View style={styles.radioInner} />
+                  )}
+                </View>
+              </View>
+            </TouchableOpacity>
+          ))}
+        </View>
+
+        {/* Audio Chanter Selection */}
+        <Text style={[styles.sectionTitle, { color: theme.textSecondary }]}>
+          AUDIO
+        </Text>
+        <View
+          style={[
+            styles.settingsCard,
+            {
+              backgroundColor: theme.settingsItemBg,
+              borderColor: theme.cardBorder,
+            },
+          ]}
+        >
+          {([
+            {
+              id: 'uvicitta' as ChanterMode,
+              nameEn: 'Ven. U Vicittasārābhivaṃsa',
+              nameMy: 'ဆရာတော် ဦးဝိစိတ္တသာရာဘိဝံသ',
+            },
+            {
+              id: 'usilananda' as ChanterMode,
+              nameEn: 'Ven. U Sīlānanda',
+              nameMy: 'ဆရာတော် ဦးသီလာနန္ဒ',
+            },
+          ]).map((monk, index) => (
+            <TouchableOpacity
+              key={monk.id}
+              style={[
+                styles.languageOption,
+                {
+                  borderBottomColor: theme.border,
+                  borderBottomWidth: index === 0 ? 1 : 0,
+                },
+              ]}
+              onPress={() => updateSettings({ chanter: monk.id })}
+            >
+              <View style={styles.languageRow}>
+                <View style={styles.languageTextCol}>
+                  <Text
+                    style={[styles.languageName, { color: theme.text }]}
+                  >
+                    {settings.language === 'myanmar' ? monk.nameMy : monk.nameEn}
+                  </Text>
+                </View>
+                <View
+                  style={[
+                    styles.radio,
+                    {
+                      borderColor: theme.primary,
+                      backgroundColor:
+                        settings.chanter === monk.id
+                          ? theme.primary
+                          : 'transparent',
+                    },
+                  ]}
+                >
+                  {settings.chanter === monk.id && (
                     <View style={styles.radioInner} />
                   )}
                 </View>

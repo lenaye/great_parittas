@@ -2,10 +2,13 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LanguageMode } from '../data/parittaTexts';
 
+export type ChanterMode = 'uvicitta' | 'usilananda';
+
 // Keys for AsyncStorage
 const STORAGE_KEYS = {
   DARK_MODE: '@settings_darkMode',
   LANGUAGE: '@settings_language',
+  CHANTER: '@settings_chanter',
   AUTO_SCROLL: '@settings_autoScroll',
   SHOW_TRANSLATION: '@settings_showTranslation',
   FONT_SIZE: '@settings_fontSize',
@@ -14,6 +17,7 @@ const STORAGE_KEYS = {
 export interface AppSettings {
   darkMode: boolean;
   language: LanguageMode;
+  chanter: ChanterMode;
   autoScroll: boolean;
   showTranslation: boolean;
   fontSize: number;
@@ -28,6 +32,7 @@ interface SettingsContextType {
 const defaultSettings: AppSettings = {
   darkMode: false,
   language: 'myanmar',
+  chanter: 'uvicitta',
   autoScroll: false,
   showTranslation: false,
   fontSize: 18,
@@ -47,10 +52,11 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     (async () => {
       try {
-        const [darkMode, language, autoScroll, showTranslation, fontSize] =
+        const [darkMode, language, chanter, autoScroll, showTranslation, fontSize] =
           await Promise.all([
             AsyncStorage.getItem(STORAGE_KEYS.DARK_MODE),
             AsyncStorage.getItem(STORAGE_KEYS.LANGUAGE),
+            AsyncStorage.getItem(STORAGE_KEYS.CHANTER),
             AsyncStorage.getItem(STORAGE_KEYS.AUTO_SCROLL),
             AsyncStorage.getItem(STORAGE_KEYS.SHOW_TRANSLATION),
             AsyncStorage.getItem(STORAGE_KEYS.FONT_SIZE),
@@ -59,6 +65,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
         setSettings({
           darkMode: darkMode === 'true',
           language: (language as LanguageMode) || 'myanmar',
+          chanter: (chanter as ChanterMode) || 'uvicitta',
           autoScroll: autoScroll === 'true',
           showTranslation: showTranslation === 'true',
           fontSize: fontSize ? parseInt(fontSize, 10) : 18,
@@ -85,6 +92,11 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       if ('language' in partial) {
         promises.push(
           AsyncStorage.setItem(STORAGE_KEYS.LANGUAGE, next.language)
+        );
+      }
+      if ('chanter' in partial) {
+        promises.push(
+          AsyncStorage.setItem(STORAGE_KEYS.CHANTER, next.chanter)
         );
       }
       if ('autoScroll' in partial) {
