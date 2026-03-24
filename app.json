@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "Great Parittas",
+    "slug": "great-parittas",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#8B4513"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.greatparittas.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#8B4513",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "package": "com.greatparittas.app",
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-font"
+    ]
+  }
+}
