@@ -1,4 +1,5 @@
-1. Paṇidhānato paṭṭhāya, Tathāgatassa dasapāramiyo,
+#Prelude
+0. Paṇidhānato paṭṭhāya, Tathāgatassa dasapāramiyo,
 dasa-upapāramiyo, dasaparamatthapāramiyo ti - samatiṁsapāramiyo
 pañcamahāpariccāge, lokatthacariyaṁ
 ñātatthacariyaṁ Buddhatthacariyan-ti
@@ -10,69 +11,69 @@ sabbe pime Buddhaguṇe āvajjitvā, Vesāliyā tīsu pākārantaresu,
 tiyāmarattiṁ, parittaṁ karonto āyasmā Ānandatthero
 viya kāruññacittaṁ upaṭṭhapetvā:
 
-2. Koṭīsatasahassesu cakkavāḷesu devatā
+Koṭīsatasahassesu cakkavāḷesu devatā
 Yassānaṁ paṭiggaṇhanti yañ-ca Vesāliyā pure,
 
-3. rogāmanusssadubbhikkhasambhūtaṁ tividhaṁ bhayaṁ,
+rogāmanusssadubbhikkhasambhūtaṁ tividhaṁ bhayaṁ,
 khippam-antaradhāpesi, parittaṁ taṁ bhaṇāmahe:
 
-4. Yānīdha bhūtāni samāgatāni
+1. Yānīdha bhūtāni samāgatāni
 Bhummāni vā yā niva antaḷikkhe
 Sabbeva bhūtā sumanā bhavantu
 Athopi sakkacca sunantu bhāsitaṁ
 
-5. Tasmā hi bhūtā nisāmetha sabbe
+2. Tasmā hi bhūtā nisāmetha sabbe
 Mettaṁ karotha mānusiyā pajāya
 Divā ca ratto ca haranti ye baliṁ
 Tasmā hi ne rakkhatha appamattā
 
-6. Yaṁ kiñci vittaṁ idha vā huraṁ vā
+3. Yaṁ kiñci vittaṁ idha vā huraṁ vā
 Saggesu vā yaṁ ratanaṁ paṇītaṁ
 Na no samaṁ atthi Tathāgatena
 Idampi Buddhe ratanaṁ paṇītaṁ
 Etena saccena suvatthi hotu
 
-7. Khayaṁ virāgaṁ amataṁ paṇītaṁ
+4. Khayaṁ virāgaṁ amataṁ paṇītaṁ
 Yadajjhagā Sakyamunī samāhito
 Na tena Dhammena samatthi kiñci
 Idampi Dhamme ratanaṁ paṇītaṁ
 Etena saccena suvatthi hotu
 
-8. Yaṁ Buddhaseṭṭho parivaṇṇayī suciṁ
+5. Yaṁ Buddhaseṭṭho parivaṇṇayī suciṁ
 Samādimānantarikaññamāhu
 Samādhinā tena samo na vijjati
 Idampi Dhamme ratanaṁ paṇītaṁ
 Etena saccena suvatthi hotu
 
-9. Ye puggalā aṭṭha sataṁ pasatthā
+6. Ye puggalā aṭṭha sataṁ pasatthā
 Cattāri etāni yugāni honti
 Te dakkhiṇeyyā Sugatassa sāvakā
 Etesu dinnāni mahapphalāni
 Idampi Saṅghe ratanaṁ paṇītaṁ
 Etena saccena suvatthi hotu
 
-10. Ye suppayuttā manasā daḷhena
+7. Ye suppayuttā manasā daḷhena
 Nikkāmino Gotama sāsanamhi
 Te pattipattā amataṁ vigayha
 Laddhā mudhā nibbutiṁ bhuñjamānā
 Idampi Saṅghe ratanaṁ paṇītaṁ
 Etena saccena suvatthi hotu
 
-11. Yathindakhīlo paṭhaviṁ sito siyā
+8. Yathindakhīlo paṭhaviṁ sito siyā
 Catubbhi vātebhi asampakampiyo
 Tathūpamaṁ sappurisaṁ vadāmi
 Yo ariyasaccāni avecca passati
 Idampi Saṅghe ratanaṁ paṇītaṁ
 Etena saccena suvatthi hotu
 
-12. Ye ariyasaccāni vibhāvayanti
+9. Ye ariyasaccāni vibhāvayanti
 Gambhīrapaññena sudesitāni
 Kiñcāpi te honti bhusappamattā
 Na te bhavaṁ aṭṭhamaṁ ādiyanti
 Idam’pi Saṅghe ratanaṁ paṇītaṁ
 Etena saccena suvatthi hotu
 
-13. Sahāva’ssa dassana sampadāya
+10. Sahāva’ssa dassana sampadāya
 Tayassu dhammā jahitā bhavanti
 Sakkāyadiṭṭhi vicikicchitañ ca
 Sīlabbataṁvā’pi yadatthi kiñci
@@ -81,45 +82,43 @@ Cha cābhiṭhānāni abhabbo kātuṁ
 Idampi Saṅghe ratanaṁ paṇītaṁ
 Etena saccena suvatthi hotu
 
-14. Kiñcā’pi so kammaṁ karoti pāpakaṁ
+11. Kiñcā’pi so kammaṁ karoti pāpakaṁ
 Kāyena vācā uda cetasā vā
 Abhabbo so tassa paṭicchādāya
 Abhabbatā diṭṭha padassa vuttā
 Idampi Saṅghe ratanaṁ paṇītaṁ
 Etena saccena suvatthi hotu
 
-15. Vanappagumbe yathā phussitagge
+12. Vanappagumbe yathā phussitagge
 Gimhānamāse paṭhamasmiṁ gimhe
 Tathūpamaṁ Dhamma varaṁ adesayi
 Nibbāṇagāmiṁ paramaṁ hitāya
 Idampi Buddhe ratanaṁ paṇītaṁ
 Etena saccena suvatthi hotu
 
-16. Varo varaññū varado varāharo
+13. Varo varaññū varado varāharo
 Anuttaro Dhamma varaṁ adesayi
 Idampi Buddhe ratanaṁ paṇītaṁ
 Etena saccena suvatthi hotu
 
-17. Khīṇaṁ purāṇaṁ navaṁ natthi sambhavaṁ
+14. Khīṇaṁ purāṇaṁ navaṁ natthi sambhavaṁ
 virattacittā āyatike bhavasmiṁ
 Te khīṇabījā avirūḷhicchandā
 Nibbanti dhīrā yathāyaṁ padīpo
 Idampi Saṅghe ratanaṁ paṇītaṁ,
 Etena saccena suvatthi hotu
 
-18. Yānīdha bhūtāni samāgatāni
+15. Yānīdha bhūtāni samāgatāni
 Bhummāni vā yāniva antaḷikkhe
 Tathāgataṁ devamanussa pūjitaṁ
 Buddhaṁ namassāma suvatthi hotu
 
-19. Yānīdha bhūtāni samāgatāni
+16. Yānīdha bhūtāni samāgatāni
 Bhummāni vā yāniva antaḷikkhe
 Tathāgataṁ devamanussa pūjitaṁ
 Dhammaṁ namassāma suvatthi hotu
 
-20. Yānīdha bhūtāni samāgatāni
+17. Yānīdha bhūtāni samāgatāni
 Bhummāni vā yāniva antaḷikkhe
 Tathāgataṁ devamanussa pūjitaṁ
 Saṅghaṁ namassāma suvatthi hotu
-
-
