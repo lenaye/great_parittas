@@ -1,8 +1,15 @@
-Evam me sutam. Ekam samayam Bhagavā Sāvatthiyam viharati Jetavane Anāthapindikassa ārāme.
-Atha kho aññātarā devatā abhikkantāya rattiyā abhikkanta vannā kevala kappam Jetavanam obhāsetvā yena Bhagavā tenupasamkami upasamkamitvā bhagavantam.
+#Prelude
+0. Evam me sutam. Ekam samayam Bhagavā Sāvatthiyam viharati 
+Jetavane Anāthapindikassa ārāme.
+Atha kho aññātarā devatā abhikkantāya 
+rattiyā abhikkanta vannā kevala kappam 
+Jetavanam obhāsetvā yena Bhagavā 
+tenupasamkami upasamkamitvā bhagavantam.
 Abhivādetvā ekamantam atthāsi
-Ekamantam thitā kho sā devatā Bhagavantam gāthāya ajjhabhāsi.
+Ekamantam thitā kho sā devatā 
+Bhagavantam gāthāya ajjhabhāsi.
 
+#The Safeguard
 1. Bahū devā manussā ca maṅgalāni acintayuṃ ākankhamāna sotthānaṃ brūhi maṅgalamuttamaṃ
 
 2. Asevanā ca bālānaṃ paṇḍitānañ ca sevanā pūjā ca pūjanīyānaṃ etaṃ maṅgalamuttamaṃ
