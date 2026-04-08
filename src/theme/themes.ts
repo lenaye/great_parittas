@@ -17,6 +17,7 @@ export interface Theme {
   buttonActiveText: string;
   progressBg: string;
   progressFill: string;
+  playButtonBg: string;
   cardBg: string;
   cardBorder: string;
   settingsItemBg: string;
@@ -39,6 +40,7 @@ export const LightTheme: Theme = {
   buttonActiveText: '#FFFFFF',
   progressBg: '#D4C5B2',
   progressFill: '#3B7DD8',
+  playButtonBg: '#2E7D32',       // Green play button for light mode
   cardBg: '#FFFFFF',
   cardBorder: '#E8DDD0',
   settingsItemBg: '#FFFFFF',
@@ -61,6 +63,7 @@ export const DarkTheme: Theme = {
   buttonActiveText: '#1A1210',
   progressBg: '#4A3B30',
   progressFill: '#3B7DD8',
+  playButtonBg: '#D4A574',       // Warm gold play button for dark mode
   cardBg: '#2C2420',
   cardBorder: '#4A3B30',
   settingsItemBg: '#2C2420',

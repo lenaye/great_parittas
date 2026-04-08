@@ -55,6 +55,7 @@ interface AudioContextType {
   state: AudioState;
   hasAudio: (parittaId: number) => boolean;
   togglePlayback: (parittaId: number) => Promise<void>;
+  restartPlayback: () => Promise<void>;
 }
 
 const defaultState: AudioState = {
@@ -70,6 +71,7 @@ const AudioContext = createContext<AudioContextType>({
   state: defaultState,
   hasAudio: () => false,
   togglePlayback: async () => {},
+  restartPlayback: async () => {},
 });
 
 export function AudioProvider({ children }: { children: React.ReactNode }) {
@@ -191,8 +193,19 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     [settings.chanter]
   );
 
+  const restartPlayback = useCallback(async () => {
+    if (!soundRef.current) return;
+    try {
+      await soundRef.current.setPositionAsync(0);
+      await soundRef.current.playAsync();
+      setState((prev) => ({ ...prev, isPlaying: true, position: 0, progress: 0 }));
+    } catch (error) {
+      console.error('Error restarting audio:', error);
+    }
+  }, []);
+
   return (
-    <AudioContext.Provider value={{ audioAvailable, state, hasAudio, togglePlayback }}>
+    <AudioContext.Provider value={{ audioAvailable, state, hasAudio, togglePlayback, restartPlayback }}>
       {children}
     </AudioContext.Provider>
   );

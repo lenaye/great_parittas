@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { Theme } from '../theme/themes';
 import { useAudio } from '../context/AudioContext';
 
@@ -9,7 +10,7 @@ interface AudioPlayerProps {
 }
 
 export default function AudioPlayer({ parittaId, theme }: AudioPlayerProps) {
-  const { audioAvailable, state, hasAudio, togglePlayback } = useAudio();
+  const { audioAvailable, state, hasAudio, togglePlayback, restartPlayback } = useAudio();
 
   // If audio module isn't available, show fallback
   if (!audioAvailable) {
@@ -59,7 +60,7 @@ export default function AudioPlayer({ parittaId, theme }: AudioPlayerProps) {
         style={[
           styles.playButton,
           {
-            backgroundColor: audioExists ? theme.primary : theme.progressBg,
+            backgroundColor: audioExists ? theme.playButtonBg : theme.progressBg,
             opacity: audioExists ? 1 : 0.5,
           },
         ]}
@@ -95,6 +96,20 @@ export default function AudioPlayer({ parittaId, theme }: AudioPlayerProps) {
           </Text>
         </View>
       </View>
+
+      <TouchableOpacity
+        style={[
+          styles.restartButton,
+          {
+            opacity: isThisParitta ? 1 : 0.3,
+          },
+        ]}
+        onPress={() => restartPlayback()}
+        disabled={!isThisParitta}
+        accessibilityLabel="Restart"
+      >
+        <MaterialCommunityIcons name="undo" size={28} color={theme.bannerText} />
+      </TouchableOpacity>
     </View>
   );
 }
@@ -102,7 +117,7 @@ export default function AudioPlayer({ parittaId, theme }: AudioPlayerProps) {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     paddingHorizontal: 12,
     paddingVertical: 8,
   },
@@ -114,11 +129,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginRight: 12,
   },
+  restartButton: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 12,
+  },
   playIcon: {
     fontSize: 16,
   },
   progressSection: {
     flex: 1,
+    paddingTop: 17,
   },
   progressBar: {
     height: 6,

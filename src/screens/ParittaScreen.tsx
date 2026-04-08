@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import Foundation from '@expo/vector-icons/Foundation';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RouteProp } from '@react-navigation/native';
 import { PARITTAS } from '../data/parittas';
@@ -75,9 +76,7 @@ export default function ParittaScreen() {
             onPress={() => navigation.navigate('Home')}
             accessibilityLabel="Go Home"
           >
-            <Text style={[styles.navIcon, { color: theme.bannerText }]}>
-              ←
-            </Text>
+            <Foundation name="home" size={24} color={theme.bannerText} />
           </TouchableOpacity>
 
           <Text
@@ -171,7 +170,7 @@ export default function ParittaScreen() {
         contentContainerStyle={styles.contentContainer}
         showsVerticalScrollIndicator={true}
       >
-        {/* Preamble */}
+        {/* Preamble / Prelude */}
         {displayData.preamble ? (
           <View style={styles.preambleBlock}>
             <Text
@@ -189,23 +188,36 @@ export default function ParittaScreen() {
             >
               {displayData.preamble}
             </Text>
-            <View style={[styles.preambleDivider, { backgroundColor: theme.border }]} />
+            {/* Prelude translation */}
+            {displayData.preambleTranslation ? (
+              <Text
+                style={[
+                  styles.preambleTranslation,
+                  {
+                    color: theme.textTranslation,
+                    fontSize: settings.fontSize - (settings.language === 'english' ? 3 : 4),
+                    fontFamily:
+                      settings.language === 'myanmar'
+                        ? 'Padauk-Regular'
+                        : 'Maitree-Regular',
+                  },
+                ]}
+              >
+                {displayData.preambleTranslation}
+              </Text>
+            ) : null}
+            {/* Separator between prelude and main sutta */}
+            <View style={styles.preludeSeparator}>
+              <View style={[styles.separatorLine, { backgroundColor: theme.border }]} />
+              <Text style={[styles.separatorDot, { color: theme.primary }]}>✦</Text>
+              <View style={[styles.separatorLine, { backgroundColor: theme.border }]} />
+            </View>
           </View>
         ) : null}
 
         {/* Stanzas */}
         {displayData.stanzas.map((stanza) => (
           <View key={stanza.number} style={styles.stanzaBlock}>
-            {/* Stanza number badge */}
-            <Text
-              style={[
-                styles.stanzaNumber,
-                { color: theme.primary, fontFamily: 'Maitree-Bold' },
-              ]}
-            >
-              {stanza.number}.
-            </Text>
-
             {/* Pali text */}
             <Text
               style={[

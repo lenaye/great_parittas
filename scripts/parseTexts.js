@@ -28,13 +28,21 @@ const OUTPUT_FILE = path.join(__dirname, '..', 'src', 'data', 'parittaContent.ts
 /**
  * Parse a numbered text file into an array of stanzas.
  * Each stanza starts with a number like "1." or "၁။"
+ * Stanza 0 is treated as "prelude" and returned separately.
+ * Lines starting with # (e.g. #Prelude, #အမွှန်း) are stripped.
  * If no numbered stanzas are found, splits by blank lines instead.
- * Returns { preamble, stanzas } where preamble is text before first number.
+ * Returns { preamble, stanzas } where preamble is stanza 0 text.
  */
 function parseStanzas(content) {
   if (!content || !content.trim()) return { preamble: '', stanzas: [] };
 
-  const lines = content.split('\n');
+  // Strip lines starting with # (section headers like #Prelude)
+  const filteredContent = content
+    .split('\n')
+    .filter((line) => !line.trim().startsWith('#'))
+    .join('\n');
+
+  const lines = filteredContent.split('\n');
 
   // First pass: check if there are any numbered stanzas
   const hasNumberedStanzas = lines.some((line) =>
@@ -206,37 +214,51 @@ function main() {
     const translationEnglishParsed = parseStanzas(translationEnglish);
     const translationMyanmarParsed = parseStanzas(translationMyanmar);
 
-    // Merge preambles: dedicated file takes priority, then inline preamble
-    const finalPreambleEnglish = preambleEnglish.trim() || paliEnglishParsed.preamble || '';
-    const finalPreambleMyanmar = preambleMyanmar.trim() || paliMyanmarParsed.preamble || '';
+    // Extract stanza 0 as prelude, remove it from main stanzas
+    const getPrelude = (parsed) => {
+      const s0 = parsed.stanzas.find((s) => s.number === 0);
+      return s0 ? s0.text : parsed.preamble || '';
+    };
+    const getMainStanzas = (parsed) =>
+      parsed.stanzas.filter((s) => s.number > 0);
+
+    // Merge preambles: stanza 0 takes priority, then dedicated file, then inline preamble
+    const finalPreambleEnglish = getPrelude(paliEnglishParsed) || preambleEnglish.trim() || '';
+    const finalPreambleMyanmar = getPrelude(paliMyanmarParsed) || preambleMyanmar.trim() || '';
+
+    // Also get prelude translations
+    const preludeTranslationEnglish = getPrelude(translationEnglishParsed) || '';
+    const preludeTranslationMyanmar = getPrelude(translationMyanmarParsed) || '';
 
     console.log(
-      `  Pali Roman: ${paliEnglishParsed.stanzas.length} stanzas`
+      `  Pali Roman: ${getMainStanzas(paliEnglishParsed).length} stanzas`
     );
     console.log(
-      `  Pali Myanmar: ${paliMyanmarParsed.stanzas.length} stanzas`
+      `  Pali Myanmar: ${getMainStanzas(paliMyanmarParsed).length} stanzas`
     );
     console.log(
-      `  Translation English: ${translationEnglishParsed.stanzas.length} stanzas`
+      `  Translation English: ${getMainStanzas(translationEnglishParsed).length} stanzas`
     );
     console.log(
-      `  Translation Myanmar: ${translationMyanmarParsed.stanzas.length} stanzas`
+      `  Translation Myanmar: ${getMainStanzas(translationMyanmarParsed).length} stanzas`
     );
     console.log(
-      `  Preamble English: ${finalPreambleEnglish ? 'Yes' : 'No'}`
+      `  Prelude English: ${finalPreambleEnglish ? 'Yes' : 'No'}`
     );
     console.log(
-      `  Preamble Myanmar: ${finalPreambleMyanmar ? 'Yes' : 'No'}`
+      `  Prelude Myanmar: ${finalPreambleMyanmar ? 'Yes' : 'No'}`
     );
 
     allData[parittaId] = {
       folderName: folder,
-      paliRoman: paliEnglishParsed.stanzas,
-      paliMyanmar: paliMyanmarParsed.stanzas,
-      translationEnglish: translationEnglishParsed.stanzas,
-      translationMyanmar: translationMyanmarParsed.stanzas,
+      paliRoman: getMainStanzas(paliEnglishParsed),
+      paliMyanmar: getMainStanzas(paliMyanmarParsed),
+      translationEnglish: getMainStanzas(translationEnglishParsed),
+      translationMyanmar: getMainStanzas(translationMyanmarParsed),
       preambleEnglish: finalPreambleEnglish,
       preambleMyanmar: finalPreambleMyanmar,
+      preludeTranslationEnglish: preludeTranslationEnglish,
+      preludeTranslationMyanmar: preludeTranslationMyanmar,
     };
   }
 
@@ -259,6 +281,8 @@ export interface ParittaContentData {
   translationMyanmar: Stanza[];
   preambleEnglish: string;
   preambleMyanmar: string;
+  preludeTranslationEnglish: string;
+  preludeTranslationMyanmar: string;
 }
 
 const parittaContent: Record<number, ParittaContentData> = {\n`;
@@ -281,9 +305,11 @@ const parittaContent: Record<number, ParittaContentData> = {\n`;
       output += `    ],\n`;
     }
 
-    // Preambles
+    // Preambles and prelude translations
     output += `    preambleEnglish: \`${escapeForTS(data.preambleEnglish)}\`,\n`;
     output += `    preambleMyanmar: \`${escapeForTS(data.preambleMyanmar)}\`,\n`;
+    output += `    preludeTranslationEnglish: \`${escapeForTS(data.preludeTranslationEnglish)}\`,\n`;
+    output += `    preludeTranslationMyanmar: \`${escapeForTS(data.preludeTranslationMyanmar)}\`,\n`;
 
     output += `  },\n`;
   }

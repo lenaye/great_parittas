@@ -5,6 +5,7 @@ export type LanguageMode = 'myanmar' | 'english';
 
 export interface ParittaDisplayData {
   preamble: string;
+  preambleTranslation: string;
   stanzas: {
     number: number;
     pali: string;
@@ -26,6 +27,7 @@ export function getParittaDisplayData(
   if (!data) {
     return {
       preamble: '',
+      preambleTranslation: '',
       stanzas: [{ number: 1, pali: 'Content not yet available.', translation: '' }],
     };
   }
@@ -37,11 +39,17 @@ export function getParittaDisplayData(
     language === 'myanmar' ? data.translationMyanmar : data.translationEnglish;
   const preamble =
     language === 'myanmar' ? data.preambleMyanmar : data.preambleEnglish;
+  const preambleTranslation =
+    language === 'myanmar'
+      ? (data as any).preludeTranslationMyanmar || ''
+      : (data as any).preludeTranslationEnglish || '';
 
   // If no pali stanzas exist for this language, show a message
   if (paliStanzas.length === 0) {
     return {
       preamble: preamble || '',
+      preambleTranslation: showTranslation ? preambleTranslation : '',
+      preambleTranslation: showTranslation ? preambleTranslation : '',
       stanzas: [
         {
           number: 1,
@@ -66,7 +74,7 @@ export function getParittaDisplayData(
     translation: showTranslation ? (translationMap.get(p.number) || '') : '',
   }));
 
-  return { preamble: preamble || '', stanzas };
+  return { preamble: preamble || '', preambleTranslation: showTranslation ? preambleTranslation : '', stanzas };
 }
 
 export default parittaContent;
