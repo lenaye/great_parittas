@@ -273,6 +273,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 4,
+    overflow: 'visible',
   },
   topRow: {
     flexDirection: 'row',
@@ -336,17 +337,30 @@ const styles = StyleSheet.create({
     lineHeight: 26,
     fontStyle: 'italic',
   },
-  preambleDivider: {
+  preambleTranslation: {
+    marginTop: 10,
+    fontStyle: 'italic',
+    lineHeight: 24,
+    paddingLeft: 12,
+    borderLeftWidth: 3,
+    borderLeftColor: 'rgba(0,0,0,0.1)',
+  },
+  preludeSeparator: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 20,
+    marginBottom: 4,
+  },
+  separatorLine: {
+    flex: 1,
     height: 1,
-    marginTop: 16,
+  },
+  separatorDot: {
+    marginHorizontal: 12,
+    fontSize: 14,
   },
   stanzaBlock: {
     marginBottom: 24,
-  },
-  stanzaNumber: {
-    fontSize: 13,
-    fontWeight: 'bold',
-    marginBottom: 4,
   },
   paliText: {
     lineHeight: 30,

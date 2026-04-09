@@ -108,7 +108,7 @@ export default function AudioPlayer({ parittaId, theme }: AudioPlayerProps) {
         disabled={!isThisParitta}
         accessibilityLabel="Restart"
       >
-        <MaterialCommunityIcons name="undo" size={28} color={theme.bannerText} />
+        <MaterialCommunityIcons name="undo" size={24} color={theme.bannerText} />
       </TouchableOpacity>
     </View>
   );
@@ -118,8 +118,10 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    paddingHorizontal: 12,
+    paddingLeft: 12,
+    paddingRight: 16,
     paddingVertical: 8,
+    overflow: 'visible',
   },
   playButton: {
     width: 40,
@@ -130,12 +132,12 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   restartButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 12,
+    marginLeft: 8,
   },
   playIcon: {
     fontSize: 16,
